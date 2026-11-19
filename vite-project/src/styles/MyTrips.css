@@ -1,0 +1,1025 @@
+/* My Trips Page */
+.mytrips-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 100px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Override navbar colors for MyTrips page only - make headings black */
+.navbar.mytrips-navbar:not(.navbar-scrolled) .nav-link {
+  color: black !important;
+}
+
+.navbar.mytrips-navbar:not(.navbar-scrolled) .my-trips-title {
+  color: black !important;
+}
+
+.navbar.mytrips-navbar:not(.navbar-scrolled) .my-trips-subtitle {
+  color: black !important;
+}
+
+/* Background Slideshow Container */
+.mytrips-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: #f0f2f5;
+
+}
+
+/* Ensure footer stays above background with proper styling */
+.mytrips-page + footer,
+.mytrips-page ~ footer {
+  position: relative;
+  z-index: 100 !important;
+  background: #f5f9fc !important;
+}
+
+/* Individual Background Images */
+.mytrips-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+}
+
+.mytrips-bg-image.active {
+  opacity: 1;
+}
+
+.mytrips-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  height: auto;
+}
+
+/* Breadcrumb + Filter Row */
+.breadcrumb-filter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.breadcrumb-link {
+  cursor: pointer;
+  color: #353535;
+  transition: color 0.2s;
+}
+
+.breadcrumb-link:hover {
+  color: #5a5858;
+}
+
+.breadcrumb-arrow {
+  font-size: 11px;
+  color: #46474a;
+}
+
+.breadcrumb-current {
+  color: #7c0d0d;
+  font-weight: 500;
+}
+
+/* Filter Pills */
+.filter-pills {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-pill {
+  padding: 8px 24px;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  background: white;
+  color: #d52020;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.filter-pill:hover {
+  border-color: #f63b3b;
+}
+
+.filter-pill.active {
+  background: white;
+  border: 2px solid #f63b3b;
+  color: #f63b3b;
+}
+
+/* Combined Section */
+.combined-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+/* Service Strip */
+.service-strip {
+  padding: 8px 30px;
+  display: flex;
+  gap: 50px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.service-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: color 0.2s;
+}
+
+.service-option:hover {
+  color: #1f2937;
+}
+
+.service-option.active {
+  color: #d22a2a;
+}
+
+.service-option.active::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #f63b3b;
+}
+
+.service-icon {
+  font-size: 18px;
+}
+
+/* Search Filter Section */
+.search-filter-section {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  padding: 8px 30px;
+}
+
+.search-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.search-filter-wide {
+  flex: 2;
+}
+
+.search-filter-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-filter-input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  color: #1f2937;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-filter-input::placeholder {
+  color: #9ca3af;
+}
+
+.search-filter-input:focus {
+  border-color: #f63b3b;
+  box-shadow: 0 0 0 3px rgba(246, 59, 59, 0.1);
+}
+
+.search-filter-input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+/* Booking Cards Container */
+.booking-cards-container {
+  background: white;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: auto;
+}
+
+/* Bookings Table */
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Poppins", sans-serif;
+}
+
+.bookings-table thead {
+  background: #5c1a1a;
+}
+
+.bookings-table thead tr th {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  padding: 18px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bookings-table thead tr th:nth-child(7) {
+  padding-left: 80px;
+  
+}
+
+
+.bookings-table thead tr th:nth-child(6) {
+  padding-left: 60px;
+  
+}
+
+.bookings-table thead tr th:nth-child(1) {
+  padding-left: 40px;
+  
+}
+.bookings-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.bookings-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.bookings-table tbody td {
+  padding: 20px;
+  font-size: 14px;
+  color: #371f1f;
+  vertical-align: top;
+}
+
+/* Date Column */
+.date-column {
+  font-size: 13px;
+}
+
+.booking-date {
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.booking-time {
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.date-column div:first-child {
+  margin-bottom: 4px;
+}
+
+/* TXN Column */
+.txn-column {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Travel Details Column */
+.travel-details-column div {
+  margin-bottom: 4px;
+}
+
+.travel-details-column div:last-child {
+  margin-bottom: 0;
+}
+
+/* Other Details Column */
+.other-details-column div {
+  margin-bottom: 4px;
+}
+
+.other-details-column div:last-child {
+  margin-bottom: 0;
+}
+
+/* Amount Column */
+.amount-column div {
+  margin-bottom: 4px;
+}
+
+.amount-column div:last-child {
+  margin-bottom: 0;
+}
+
+/* Action Column */
+.action-column {
+  text-align: center;
+}
+
+.action-column .action-btn-print,
+.action-column .action-btn-cancel,
+.action-column .action-btn-refund {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.action-btn-print {
+  background: transparent;
+  border: none;
+  color: #f63b3b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.2s;
+}
+
+.action-btn-print:hover {
+  color: #eb2525;
+  text-decoration: underline;
+}
+
+.action-btn-cancel {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.2s;
+}
+
+.action-btn-cancel:hover {
+  color: #4b5563;
+  text-decoration: underline;
+}
+
+.action-separator {
+  margin: 0 8px;
+  color: #d1d5db;
+}
+
+.action-separator-text {
+  margin: 0 8px;
+  color: #d1d5db;
+  display: inline;
+}
+
+.action-btn-refund {
+  background: transparent;
+  border: none;
+  color: #f63b3b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  transition: color 0.2s;
+}
+
+.action-btn-refund:hover {
+  color: #eb2525;
+  text-decoration: underline;
+}
+
+/* Flights Specific Columns */
+.booking-ref-column {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+/* Passenger Details Column */
+.passenger-details-column {
+  line-height: 1.6;
+}
+
+.passenger-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.additional-passengers {
+  font-size: 11px;
+  vertical-align: super;
+  font-weight: 700;
+  color: #f63b3b;
+}
+
+.passenger-mobile {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.passenger-email {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Travelling Details Column */
+.travelling-details-column {
+  line-height: 1.6;
+}
+
+.travel-date {
+  font-weight: 500;
+  color: #1f2937;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.travel-time {
+  color: #7d7f81;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.travelling-details-column div {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.travelling-details-column div:last-child {
+  margin-bottom: 0;
+}
+
+/* Amount Value Bold */
+.amount-value {
+  font-weight: 700;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+/* Status Column */
+.status-column {
+  text-align: center;
+  
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-badge.status-initiate {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.status-initiate .status-dot {
+  background-color: #065f46;
+}
+
+.status-badge.status-success {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-badge.status-success .status-dot {
+  background-color: #1e40af;
+}
+
+.status-badge.status-cancelled {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.status-cancelled .status-dot {
+  background-color: #92400e;
+}
+
+.status-badge.status-failed {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-badge.status-failed .status-dot {
+  background-color: #991b1b;
+}
+
+/* Styled Action Buttons for Flights */
+.action-buttons-group {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-btn-styled {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.action-btn-print-styled {
+  background-color: #dc2626;
+  color: white;
+}
+
+.action-btn-print-styled:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+}
+
+.action-btn-cancel-styled {
+  background-color: #6b7280;
+  color: white;
+}
+
+.action-btn-cancel-styled:hover {
+  background-color: #4b5563;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(107, 114, 128, 0.3);
+}
+
+.action-btn-refund-styled {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.action-btn-refund-styled:hover {
+  background-color: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+/* Guest Details Column (Hotels) */
+.guest-details-column {
+  line-height: 1.6;
+}
+
+.guest-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.checkin-checkout {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.guest-mobile {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.guest-email {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Hotel Details Column */
+.hotel-details-column {
+  line-height: 1.6;
+}
+
+.hotel-name {
+  font-weight: 500;
+  font-size: 13px;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.hotel-details-column div {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.hotel-details-column div:last-child {
+  margin-bottom: 0;
+}
+
+/* No Bookings Message */
+.no-bookings {
+  text-align: center !important;
+  padding: 60px 20px !important;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* Pagination Section */
+.pagination-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Poppins", sans-serif;
+  min-width: 36px;
+}
+
+.pagination-btn:hover {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+.pagination-btn.active-page {
+  background: #5c1a1a;
+  color: white;
+  border-color: #5c1a1a;
+}
+
+.pagination-btn.prev-btn,
+.pagination-btn.next-btn {
+  font-weight: 600;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Responsive Design for Table */
+@media (max-width: 1200px) {
+  .bookings-table thead tr th,
+  .bookings-table tbody td {
+    padding: 15px;
+    font-size: 13px;
+  }
+  .booking-cards-container {
+    height: auto !important;
+    min-height: unset !important;
+  }
+}
+
+/* Responsive Design for Table */
+@media (max-width: 1200px) {
+  .bookings-table thead tr th,
+  .bookings-table tbody td {
+    padding: 15px;
+    font-size: 13px;
+  }
+  .booking-cards-container {
+    height: auto !important;
+    min-height: unset !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .bookings-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .bookings-table thead tr th,
+  .bookings-table tbody td {
+    padding: 12px 15px;
+    font-size: 12px;
+  }
+  .booking-cards-container {
+    height: auto !important;
+    min-height: unset !important;
+  }
+}
+
+/* OLD BOOKING CARD STYLES - KEPT FOR REFERENCE IF NEEDED */
+/*
+.booking-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  background: white;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.booking-route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.booking-type-icon {
+  font-size: 24px;
+}
+
+/* OLD BOOKING CARD STYLES - KEPT FOR REFERENCE IF NEEDED */
+/*
+.booking-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  background: white;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.booking-route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.booking-type-icon {
+  font-size: 24px;
+  color: #6b7280;
+}
+
+.booking-route h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.view-manage-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.view-manage-btn:hover {
+  background: #2563eb;
+}
+
+.booking-details-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.booking-status {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.booking-type,
+.booking-id {
+  color: #6b7280;
+}
+
+.booking-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.journey-info {
+  display: flex;
+  gap: 100px;
+}
+
+.journey-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.journey-label {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.journey-date {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.journey-time {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+.journey-location {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.booking-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.operator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.operator-icon {
+  font-size: 16px;
+}
+
+.download-invoice-btn {
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: "Poppins", sans-serif;
+}
+
+.download-invoice-btn:hover {
+  color: #2563eb;
+}
+
+.download-icon {
+  font-size: 13px;
+}
+*/
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .mytrips-container {
+    padding: 20px;
+  }
+
+  .journey-info {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumb-filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .filter-pills {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .service-strip {
+    gap: 30px;
+    overflow-x: auto;
+  }
+
+  .booking-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .view-manage-btn {
+    width: 100%;
+  }
+
+  .booking-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .journey-info {
+    gap: 30px;
+  }
+
+  .booking-actions {
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .mytrips-container {
+    padding: 15px;
+  }
+
+  .journey-info {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .filter-pill {
+    padding: 6px 18px;
+    font-size: 13px;
+  }
+}
