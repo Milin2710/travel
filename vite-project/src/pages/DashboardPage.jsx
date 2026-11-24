@@ -65,8 +65,8 @@ const toActivityRow = (booking) => {
   let status = "Completed";
   if (booking.booking_status === "cancelled") {
     status = "Cancelled";
-  } else if (isUpcoming) {
-    status = "Pending";
+  } else if (booking.can_cancel) {
+    status = "Confirmed";
   }
 
   return {
@@ -151,6 +151,7 @@ function DashboardPage() {
   const getStatusBadgeClass = (status) => {
     switch(status) {
       case 'Completed':
+      case 'Confirmed':
         return 'status-completed';
       case 'Pending':
         return 'status-pending';
@@ -166,6 +167,7 @@ function DashboardPage() {
   const getStatusIcon = (status) => {
     switch(status) {
       case 'Completed':
+      case 'Confirmed':
         return <FaCheckCircle />;
       case 'Pending':
         return <FaClock />;
